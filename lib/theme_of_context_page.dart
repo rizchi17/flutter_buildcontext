@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ThemeOfContextPage extends StatefulWidget {
+class ThemeOfContextPage extends StatelessWidget {
   const ThemeOfContextPage({super.key});
 
-  @override
-  State<ThemeOfContextPage> createState() => _ThemeOfContextPageState();
-}
-
-class _ThemeOfContextPageState extends State<ThemeOfContextPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +18,7 @@ class _ThemeOfContextPageState extends State<ThemeOfContextPage> {
               // この context はbuild関数の引数なので、
               // -> red
               color: Theme.of(context).primaryColor,
-              child: Text('Default'),
+              child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
             ),
             Theme(
               data: ThemeData(primaryColor: Colors.blue),
@@ -35,12 +30,13 @@ class _ThemeOfContextPageState extends State<ThemeOfContextPage> {
                 // この context はbuild関数の引数なので、
                 // Theme で primaryColor 指定してるけれど使用されるのは
                 // -> red
-                child: Text('Containerの親でThemeを上書き'),
+                child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
               ),
             ),
             Theme(
-                data: ThemeData(primaryColor: Colors.blue),
-                child: Builder(builder: (BuildContext context) {
+              data: ThemeData(primaryColor: Colors.blue),
+              child: Builder(
+                builder: (BuildContext context) {
                   return Container(
                     alignment: Alignment.center,
                     width: 200,
@@ -48,9 +44,11 @@ class _ThemeOfContextPageState extends State<ThemeOfContextPage> {
                     // この context は Builder で新しく作られた BuildContextなので、
                     // -> blue
                     color: Theme.of(context).primaryColor,
-                    child: Text('Builderで新しいBuildContextを生成'),
+                    child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
                   );
-                }))
+                },
+              ),
+            )
           ],
         ),
       ),

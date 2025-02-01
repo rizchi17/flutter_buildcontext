@@ -18,7 +18,7 @@ class ThemeOfContextPage extends StatelessWidget {
               // この context はbuild関数の引数なので、
               // -> red
               color: Theme.of(context).primaryColor,
-              child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
+              child: Text('contextが紐づくwidgetは${context.widget.toString()}のため、赤'),
             ),
             Theme(
               data: ThemeData(primaryColor: Colors.blue),
@@ -30,7 +30,7 @@ class ThemeOfContextPage extends StatelessWidget {
                 // この context はbuild関数の引数なので、
                 // Theme で primaryColor 指定してるけれど使用されるのは
                 // -> red
-                child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
+                child: Text('contextが紐づくwidgetは${context.widget.toString()}のため、赤'),
               ),
             ),
             Theme(
@@ -44,7 +44,7 @@ class ThemeOfContextPage extends StatelessWidget {
                     // この context は Builder で新しく作られた BuildContextなので、
                     // -> blue
                     color: Theme.of(context).primaryColor,
-                    child: Text('contextが紐づくwidget : ${context.widget.toString()}'),
+                    child: Text('contextが紐づくwidgetは${context.widget.toString()}のため、青'),
                   );
                 },
               ),
